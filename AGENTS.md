@@ -1,4 +1,4 @@
-\# AGENTS.md
+﻿\# AGENTS.md
 
 
 
@@ -14,7 +14,7 @@ Target:
 
 
 
-\* 4–6 players
+\* 4вЂ“6 players
 
 \* PC
 
@@ -156,17 +156,17 @@ The repository may contain:
 
 Docs/
 
-├── Architecture.md
+в”њв”Ђв”Ђ Architecture.md
 
-├── Decisions.md
+в”њв”Ђв”Ђ Decisions.md
 
-└── Prototype/
+в””в”Ђв”Ђ Prototype/
 
-&#x20;   ├── Toy.md
+&#x20;   в”њв”Ђв”Ђ Toy.md
 
-&#x20;   ├── Roadmap.md
+&#x20;   в”њв”Ђв”Ђ Roadmap.md
 
-&#x20;   └── Progress.md
+&#x20;   в””в”Ђв”Ђ Progress.md
 
 ```
 
@@ -416,19 +416,19 @@ Interaction should generally follow:
 
 Player
 
-&#x20; ↓
+&#x20; в†“
 
 Interaction detection
 
-&#x20; ↓
+&#x20; в†“
 
 Target
 
-&#x20; ↓
+&#x20; в†“
 
 Available capabilities
 
-&#x20; ↓
+&#x20; в†“
 
 Action
 
@@ -512,15 +512,15 @@ The basic model is:
 
 Normal
 
-&#x20; ↓
+&#x20; в†“
 
 Ragdoll
 
-&#x20; ↓
+&#x20; в†“
 
 Recover
 
-&#x20; ↓
+&#x20; в†“
 
 Normal
 
@@ -636,7 +636,7 @@ unless explicitly requested.
 
 
 
-The eventual target is approximately 4–6 players on Steam.
+The eventual target is approximately 4вЂ“6 players on Steam.
 
 
 
@@ -648,11 +648,11 @@ Even without networking, keep gameplay reasonably separated into:
 
 Input
 
-&#x20; ↓
+&#x20; в†“
 
 Gameplay State
 
-&#x20; ↓
+&#x20; в†“
 
 Physics / Visual Representation
 
@@ -689,6 +689,28 @@ Do not introduce architecture frameworks, dependency injection containers, ECS/D
 
 
 \# Code Style and Design
+
+
+
+## Prototype code quality (required)
+
+
+
+Code must be written for a small team and for AI agents continuing the work. Prefer rewriting a messy system over stacking local patches.
+
+
+
+Priority order:
+
+
+
+1\. **Readable for agents and humans** — linear control flow, clear names, one obvious path per state. Avoid multi-failsafe spaghetti (same finish method called from many unrelated branches).
+
+2\. **Easy to debug** — bugs should point to one system. Prefer explicit gameplay-owned values over hidden engine side effects (e.g. root motion on a child Model). Temporary prefixed logs are fine while isolating a bug.
+
+3\. **Composable prototype mechanics** — small focused components that combine (Grab, Ragdoll, Movement). Do not entangle unrelated responsibilities so the next mechanic cannot be added cleanly.
+
+4\. **Rewrite is allowed** — Prototype 0 is not production. If the design is globally wrong, replace the approach. Do not protect bad structure with tiny symptom fixes.
 
 
 
@@ -733,6 +755,11 @@ Avoid:
 \* premature optimization
 
 \* framework-heavy solutions
+
+\* opaque workarounds that fight Unity systems instead of configuring them correctly
+
+
+
 
 
 
@@ -824,17 +851,17 @@ A fix must be:
 
 
 
-\* **logical** — the cause and the solution are understandable
+\* **logical** вЂ” the cause and the solution are understandable
 
-\* **architecturally consistent** — it fits the existing systems and responsibilities
+\* **architecturally consistent** вЂ” it fits the existing systems and responsibilities
 
-\* **minimal** — changes only what the bug actually requires
+\* **minimal** вЂ” changes only what the bug actually requires
 
-\* **maintainable** — it does not create hidden behavior or duplicate sources of truth
+\* **maintainable** вЂ” it does not create hidden behavior or duplicate sources of truth
 
 
 
-If the root cause is unclear, **debug first** — do not patch symptoms.
+If the root cause is unclear, **debug first** вЂ” do not patch symptoms.
 
 
 
@@ -882,7 +909,7 @@ Inspector and prefab values remain the source of truth for tuning unless an ADR 
 
 
 
-When choosing between a quick workaround and a proper fix, prefer the proper fix — especially during prototype work, where hidden hacks accumulate fast.
+When choosing between a quick workaround and a proper fix, prefer the proper fix вЂ” especially during prototype work, where hidden hacks accumulate fast.
 
 
 
@@ -1272,35 +1299,35 @@ For example, prefer:
 
 Movement
 
-↓
+в†“
 
 Test
 
-↓
+в†“
 
 Grab
 
-↓
+в†“
 
 Test
 
-↓
+в†“
 
 Drag
 
-↓
+в†“
 
 Test
 
-↓
+в†“
 
 Ragdoll
 
-↓
+в†“
 
 Test
 
-↓
+в†“
 
 Carry
 

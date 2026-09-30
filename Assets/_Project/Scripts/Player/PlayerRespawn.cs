@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace SporeSlop.Player
 {
+    /// <summary>
+    /// Y-threshold respawn (ADR-003). Recovers from ragdoll first, then resets movement / fall tracking.
+    /// </summary>
     [RequireComponent(typeof(PlayerMovement))]
     public class PlayerRespawn : MonoBehaviour
     {
@@ -10,11 +13,13 @@ namespace SporeSlop.Player
         [SerializeField] float respawnDelay;
 
         PlayerMovement _movement;
+        PlayerRagdoll _ragdoll;
         float _respawnTimer;
 
         void Awake()
         {
             _movement = GetComponent<PlayerMovement>();
+            _ragdoll = GetComponent<PlayerRagdoll>();
         }
 
         void Start()
@@ -45,7 +50,14 @@ namespace SporeSlop.Player
                 return;
             }
 
+            if (_ragdoll != null && _ragdoll.IsRagdolled)
+                _ragdoll.Recover();
+
             _movement.ResetState(spawnPoint.position, spawnPoint.rotation);
+
+            if (_ragdoll != null)
+                _ragdoll.ResetFallTracking();
+
             _respawnTimer = respawnDelay;
         }
     }

@@ -3,7 +3,8 @@
 ## Phase 1 — Player Foundation
 
 - [x] Third-person movement
-- [x] Camera
+- [x] Camera (free-orbit Cinemachine — Phase 1)
+- [x] Camera soft-lock / behind player (playtest follow-up → look-driven yaw)
 - [x] Running
 - [x] Jumping
 - [x] Falling
@@ -11,41 +12,49 @@
 
 Goal: Validate basic movement and camera feel.
 
-**Status:** Complete (playtest 2026-09-23). Free-orbit camera accepted for now; camera-behind-player lock deferred.
+**Status:** Movement + look-driven third-person camera (2026-09-30).
+
+**Next:** Phase 5 injured carry/drag (or feel tuning).
 
 ---
 
 ## Phase 2 — Physical Interaction
 
-- [ ] Detect physical objects
-- [ ] Grab
-- [ ] Hold
-- [ ] Release
-- [ ] Throw
+- [x] Detect physical objects
+- [x] Grab
+- [x] Hold
+- [x] Release
+- [x] Throw
 
 Goal: Validate basic physical interaction.
 
-**Next:** object detection + test prop in Prototype0 scene.
+**Status:** Grab/hold/release/throw playtested path complete (throw 2026-09-30).
 
 ---
 
 ## Phase 3 — Dragging
 
-- [ ] Grab heavy object
-- [ ] Pull object
-- [ ] Release object
+- [x] Grab heavy object
+- [x] Pull object
+- [x] Release object
 
 Goal: Validate physical dragging.
+
+**Status:** Playtested (2026-09-28), then **removed** (2026-09-29). Prop-drag vs CharacterController was a dead end; Hold remains. Player/injured drag stays Phase 5. See ADR-007.
 
 ---
 
 ## Phase 4 — Ragdoll
 
-- [ ] Enter ragdoll
-- [ ] Physics-controlled body
-- [ ] Recover
+- [x] Enter ragdoll
+- [x] Physics-controlled body (humanoid bones)
+- [x] Recover (auto after delay + GettingUp anim)
+- [x] GettingUp → Locomotion exit without sink/toss (baked root Y + floor stick — 2026-09-30)
+- [x] Locomotion/hold polish (Speed from input, CycleSpeed feet, Holding layer weight)
 
 Goal: Validate whether falling, impacts and ragdoll feel fun.
+
+**Status:** Complete for Prototype 0 playtest (2026-09-30).
 
 ---
 
@@ -104,6 +113,12 @@ Goal: Determine whether the current gameplay works in multiplayer.
 
 ## Deferred (not blocking current order)
 
-- Camera soft-lock / recenter behind player (after core interactions are validated)
 - Kill-zone trigger volumes (alternative to Y-threshold respawn)
-- Feel tuning pass for movement and camera defaults
+- Feel tuning pass for movement defaults
+- Optional soft-recenter camera while running forward
+- Prop-drag system (removed; revisit only if needed outside Phase 5 player-drag)
+
+## Current order (2026-09-30)
+
+1. Phase 5 injured carry/drag
+2. Feel tuning as needed from playtest
