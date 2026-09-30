@@ -67,6 +67,10 @@ Goal: Validate whether falling, impacts and ragdoll feel fun.
 
 Goal: Validate cooperative physical interaction.
 
+**Status:** Not started. Blocked only by playtest priority (camera/throw done 2026-09-30).
+
+**Next small step:** Grab ragdolled/injured entity (detect + physical hold/drag).
+
 ---
 
 ## Phase 6 — Simple Gameplay Interactions
@@ -117,8 +121,9 @@ Goal: Determine whether the current gameplay works in multiplayer.
 - Feel tuning pass for movement defaults
 - Optional soft-recenter camera while running forward
 - Prop-drag system (removed; revisit only if needed outside Phase 5 player-drag)
+- Large-map collision authoring (static colliders / low-poly collision vs visual meshes)
 
 ## Current order (2026-09-30)
 
-1. Phase 5 injured carry/drag
-2. Feel tuning as needed from playtest
+1. Phase 5 — grab injured/ragdolled entity (then carry/drag/rescue)
+2. Feel tuning / map colliders as needed from playtest
